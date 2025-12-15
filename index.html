@@ -7,7 +7,6 @@
 <meta name="theme-color" content="#070a16"/>
 <style>
 :root{
-  /* Navidad */
   --bg:#070a16;
   --panel:#0f132b;
   --panel2:#0b1026;
@@ -20,12 +19,10 @@
   --gold2:#f59e0b;
 
   --red:#ef4444;
-  --red2:#b91c1c;
-
   --green:#22c55e;
   --ice:#22d3ee;
 
-  --neon:#37f3ff; /* reclamar */
+  --neon:#37f3ff;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -46,7 +43,7 @@ body::before{
     linear-gradient(180deg,#070a16 0%,#070a16 60%,#050812 100%);
 }
 
-/* Nieve suave */
+/* Nieve */
 .snow{position:fixed;inset:0;pointer-events:none;z-index:-1}
 .snow i{
   position:absolute;top:-10px;
@@ -111,7 +108,7 @@ h1,h2,h3,p{margin:0 0 6px}
 h1{font-size:20px}
 .muted{color:var(--muted)}
 
-/* Logo sobre el slot */
+/* Logo */
 .logoWrap{display:grid;place-items:center;margin:6px 0 8px}
 .logoBadge{
   display:flex;flex-direction:column;align-items:center;gap:6px;
@@ -121,21 +118,24 @@ h1{font-size:20px}
   box-shadow:0 8px 22px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);
   width:min(520px,100%);
 }
-.logoBadge img{height:52px;width:auto;display:block;filter:drop-shadow(0 3px 10px rgba(0,0,0,.55))}
+.logoBadge img{
+  height:56px;width:auto;display:block;
+  filter:drop-shadow(0 3px 10px rgba(0,0,0,.55));
+}
 .logoBadge .sub{
   font-weight:900;
-  letter-spacing:.22em;
+  letter-spacing:.18em;
   color:#ffe9a8;
   font-size:12px;
   text-transform:uppercase;
   opacity:.95;
 }
 @media(max-width:480px){
-  .logoBadge img{height:46px}
+  .logoBadge img{height:48px}
   .logoBadge .sub{font-size:11px}
 }
 
-/* Estadísticas */
+/* Stats */
 .stat{display:flex;gap:10px;align-items:center;justify-content:center;margin:6px 0 8px}
 .badge{
   min-width:66px;height:40px;border-radius:10px;
@@ -182,7 +182,7 @@ canvas.reelCanvas{
 .fx{position:absolute;inset:8px;pointer-events:none}
 .fx canvas{position:absolute;inset:0;display:block}
 
-/* Dock inferior */
+/* Dock */
 .dock{
   position:fixed;left:0;right:0;bottom:0;z-index:20;
   background:linear-gradient(180deg, rgba(11,15,30,0) 0%, rgba(11,15,30,.85) 22%, rgba(11,15,30,.95) 100%);
@@ -197,34 +197,18 @@ canvas.reelCanvas{
 .btn:hover{transform:translateY(-1px); box-shadow:0 10px 22px rgba(0,0,0,.35)}
 .btn:active{transform:translateY(0)}
 .btn:disabled{opacity:.6;cursor:not-allowed}
-
-/* Girar dorado */
-#spinBtn{
-  background:linear-gradient(90deg,var(--gold),var(--gold2));
-  color:#1b1202;
-}
-/* Reclamar celeste neón */
-.btn.ok{
-  background:linear-gradient(90deg,var(--neon),#7cfaff);
-  color:#03111a;
-}
+#spinBtn{background:linear-gradient(90deg,var(--gold),var(--gold2));color:#1b1202}
+.btn.ok{background:linear-gradient(90deg,var(--neon),#7cfaff);color:#03111a}
 
 /* Confetti */
 .confetti{position:fixed;inset:0;pointer-events:none;z-index:40}
 .confetti i{position:absolute;top:-20px;width:10px;height:14px;border-radius:2px;opacity:0;animation:confFall 1.6s linear forwards}
 @keyframes confFall{8%{opacity:1}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
 
-/* Modal premio */
+/* Modal */
 .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(4,6,14,.6);backdrop-filter:blur(4px);z-index:60}
 .modal.show{display:flex}
-.modalCard{
-  width:min(520px,92vw);
-  background:var(--panel2);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:14px;
-  box-shadow:0 20px 50px rgba(0,0,0,.45)
-}
+.modalCard{width:min(520px,92vw);background:var(--panel2);border:1px solid var(--border);border-radius:16px;padding:14px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
 .modalHead{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .modalHead h3{margin:0;font-size:18px}
 .modalBody{display:grid;gap:8px}
@@ -256,7 +240,7 @@ canvas.reelCanvas{
 <div class="snow" id="snow"></div>
 <div id="confetti" class="confetti" aria-hidden="true"></div>
 
-<!-- MODAL PREMIO -->
+<!-- MODAL -->
 <div id="prizeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modalCard">
     <div class="modalHead">
@@ -290,7 +274,7 @@ canvas.reelCanvas{
       <div class="panel">
         <div class="logoWrap">
           <div class="logoBadge" aria-label="Bet300 Navidad">
-            <img src="logo-navidad.png" alt="BET300 Navidad" onerror="this.style.display='none'">
+            <img src="logo-navidad.svg" alt="BET300 Navidad" onerror="this.style.display='none'">
             <div class="sub">ESPECIAL NAVIDAD</div>
           </div>
         </div>
@@ -343,7 +327,6 @@ canvas.reelCanvas{
   </div>
 </div>
 
-<!-- Dock -->
 <div class="dock">
   <button id="spinBtn" class="btn">🎯 Girar</button>
   <button id="claimBtn" class="btn ok" disabled>📲 Reclamar</button>
@@ -369,7 +352,7 @@ function setupSnow(){
 }
 setupSnow();
 
-/* ===== Plataforma + WhatsApp (5 PCs: ?pc=1|2|3|4|5) ===== */
+/* ===== 5 PCs: ?pc=1|2|3|4|5 ===== */
 const PLATFORM_LINKS = {
   pc1: "https://300vip-c01.vercel.app/",
   pc2: "https://300vip-c02.vercel.app/",
@@ -388,9 +371,9 @@ const WP_NUMBERS = {
 
 function normalizeWP(n){
   const s = String(n).replace(/[^\d+]/g, "");
-  if (s.startsWith("+")) return s.slice(1);
-  return s;
+  return s.startsWith("+") ? s.slice(1) : s;
 }
+
 const params = new URLSearchParams(location.search);
 const pcParam = (params.get('pc')||"1").trim();
 const pcMatch = /^[1-5]$/.test(pcParam) ? pcParam : "1";
@@ -459,7 +442,7 @@ const AudioKit = (()=> {
 })();
 soundToggle.addEventListener('click',()=>{ soundOn=!soundOn; soundState.textContent=soundOn?'ON':'OFF';});
 
-/* ===== Slot (emojis navideños) ===== */
+/* ===== Slot navideño ===== */
 const SYMBOLS = ["🎁","🎄","⭐","🔔","🍬","🧦","❄️","🦌","BET300"];
 const COLS = [document.getElementById('r1'),document.getElementById('r2'),document.getElementById('r3')];
 const CTX = COLS.map(c=>c.getContext('2d'));
@@ -526,8 +509,6 @@ function renderWinFX(){
 
   fxCtx.restore();
 }
-
-/* Dibujo / helpers */
 function clampMod(n,m){ return ((n % m) + m) % m; }
 
 function drawSealBET300(ctx, x, y, cell){
@@ -550,7 +531,6 @@ function drawSealBET300(ctx, x, y, cell){
   ctx.fillText("300", x, y + r*0.18);
   ctx.restore();
 }
-
 function drawSymbol(ctx, text, x, y, cell, scale=1){
   ctx.save(); ctx.translate(x,y); ctx.scale(scale,scale); ctx.translate(-x,-y);
   if(text==="BET300"){ drawSealBET300(ctx, x, y, cell); }
@@ -562,7 +542,6 @@ function drawSymbol(ctx, text, x, y, cell, scale=1){
   }
   ctx.restore();
 }
-
 function drawReel(ctx, y, reelIndex){
   const w=ctx.canvas.width, h=ctx.canvas.height;
   ctx.clearRect(0,0,w,h);
@@ -609,7 +588,7 @@ function drawReel(ctx, y, reelIndex){
   }
 }
 
-/* ===== Luces ===== */
+/* Luces */
 function placeBulbs(){
   const wrap = document.getElementById('slotBox');
   const frame = document.getElementById('reelFrame');
@@ -631,7 +610,7 @@ function placeBulbs(){
   for(let i=0;i<=perSide;i++){ addBulb(w+4, i*(h/perSide), i+300); }
 }
 
-/* ===== UI ===== */
+/* UI */
 const spinBtn = document.getElementById('spinBtn');
 const claimBtn= document.getElementById('claimBtn');
 const badge   = document.getElementById('badge');
@@ -759,7 +738,6 @@ function pickCenters(){
     return [a,b,c];
   }
 }
-
 function visibleFor(colIndex){
   const y = reelY[colIndex];
   const base = Math.floor(y);
@@ -779,7 +757,6 @@ function diagRows(lineName){
   if(lineName==="Diag ↗") return [2,1,0];
   return null;
 }
-
 function evaluateAllWins(grid){
   const lines = [
     {name:"Arriba", r:[grid.r1.top,    grid.r2.top,    grid.r3.top]},
@@ -845,6 +822,8 @@ function startRenderLoop(){
   requestAnimationFrame(renderAll);
 }
 
+/* Botones */
+const spinBtn = document.getElementById('spinBtn');
 spinBtn.addEventListener('click', ()=>{
   if(spinning) return;
   if(localStorage.getItem('slot_done')==='1'){
@@ -956,23 +935,6 @@ async function onStop(){
   setTimeout(()=> openModal(prizeLabel, code, ts), delay);
 
   spinning=false;
-}
-
-function restorePrizeIfAny(){
-  const done=localStorage.getItem('slot_done')==='1';
-  const saved=localStorage.getItem('slot_prize');
-  if(done && saved){
-    const p=JSON.parse(saved);
-    const code = localStorage.getItem('slot_code') || '—';
-    const ts   = localStorage.getItem('slot_ts')   || tsString();
-    badge.textContent=money(p.value);
-    title.textContent="🎉 ¡Premio obtenido!";
-    subtitle.innerHTML=`Recibís <b>${money(p.value)} extra</b> con tu próxima carga.`;
-    stampEl.textContent=`Código: ${code} · ${ts}`;
-    claimBtn.disabled=false; spinBtn.disabled=true;
-    const msg=whatsappText(money(p.value));
-    claimBtn.onclick=()=>location.href=`https://wa.me/${WP}?text=${encodeURIComponent(msg)}`;
-  }
 }
 
 /* Init */
