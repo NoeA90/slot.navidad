@@ -16,8 +16,10 @@
   --text:#f9fbff;
   --muted:#c7cbee;
 
-  --red:#dc2626;
-  --red-dark:#991b1b;
+  /* ✅ ROJO BRILLANTE (reemplaza naranja) */
+  --red:#ff1f3d;
+  --red2:#ff3b30;
+  --red-dark:#b30016;
 
   --gold:#facc15;
   --gold-soft:#fde68a;
@@ -27,14 +29,30 @@
 }
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.35 system-ui,-apple-system,Segoe UI,Roboto}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.35 system-ui,-apple-system,Segoe UI,Roboto; overflow-x:hidden}
 body::before{
-  content:"";position:fixed;inset:0;z-index:-2;background:
+  content:"";position:fixed;inset:0;z-index:-3;background:
     radial-gradient(900px 500px at 70% -10%, rgba(250,204,21,.18), transparent),
-    radial-gradient(700px 350px at 0% 0%, rgba(220,38,38,.16), transparent),
+    radial-gradient(700px 350px at 0% 0%, rgba(255,31,61,.18), transparent),
     radial-gradient(800px 500px at 100% 100%, rgba(34,197,94,.10), transparent),
     linear-gradient(180deg,#050818 0%,#050818 60%,#030512 100%);
 }
+
+/* ✅ NIEVE (copos) */
+.snow{position:fixed;inset:0;pointer-events:none;z-index:-2}
+.snow i{
+  position:absolute; top:-12px;
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(255,255,255,.9);
+  opacity:.75; filter:blur(.4px);
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  0%{transform:translate3d(0,-12px,0); opacity:.0}
+  10%{opacity:.85}
+  100%{transform:translate3d(var(--drift,20px),110vh,0);opacity:0}
+}
+
 .container{max-width:980px;margin:6px auto 86px;padding:0 10px}
 .card{
   background: radial-gradient(120% 100% at 50% 0%, rgba(250,204,21,.08), transparent), rgba(10,15,35,.55);
@@ -47,7 +65,7 @@ body::before{
 .head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
 .brand{font-weight:900;letter-spacing:.5px;font-size:22px}
 .pill{
-  background:linear-gradient(90deg,rgba(220,38,38,.14),rgba(250,204,21,.12));
+  background:linear-gradient(90deg,rgba(255,31,61,.16),rgba(250,204,21,.12));
   border:1px solid var(--border); border-radius:999px; padding:6px 8px; font-size:12px; color:var(--muted)
 }
 .pill.time{display:flex;gap:6px;align-items:center}
@@ -60,14 +78,17 @@ body::before{
   color:#ffe27a;font-weight:700;font-variant-numeric:tabular-nums
 }
 .rightTop{margin-left:auto;display:flex;gap:8px;align-items:center}
+
+/* ✅ Botón header -> ROJO BRILLANTE */
 .btnLink{
-  display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border-radius:12px;font-weight:900;
-  background:linear-gradient(90deg,var(--red),var(--gold));
-  color:#2a0a0a;text-decoration:none;border:1px solid rgba(255,255,255,.06);
-  transition:transform .08s ease, box-shadow .08s ease
+  display:inline-flex;gap:8px;align-items:center;padding:9px 12px;border-radius:12px;font-weight:950;
+  background:linear-gradient(90deg,var(--red),var(--red2));
+  color:#ffffff;text-decoration:none;border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 10px 22px rgba(255,31,61,.22);
+  transition:transform .08s ease, box-shadow .08s ease, filter .08s ease
 }
 .btnLink:focus-visible{outline:2px solid var(--gold); outline-offset:2px; border-radius:14px}
-.btnLink:hover{transform:translateY(-1px); box-shadow:0 8px 18px rgba(0,0,0,.35)}
+.btnLink:hover{transform:translateY(-1px); box-shadow:0 14px 28px rgba(255,31,61,.28); filter:brightness(1.03)}
 
 .panel{background:rgba(6,10,28,.55);border:1px solid var(--border);border-radius:14px;padding:10px}
 .center{text-align:center}
@@ -75,11 +96,11 @@ h1,h2,h3,p{margin:0 0 6px}
 h1{font-size:20px}
 .muted{color:var(--muted)}
 
-/* Logo sobre el slot */
+/* Logo */
 .logoWrap{display:grid;place-items:center;margin:8px 0 10px}
 .logoBadge{
   display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:16px;
-  background:linear-gradient(180deg,rgba(220,38,38,.18),rgba(250,204,21,.10));
+  background:linear-gradient(180deg,rgba(255,31,61,.18),rgba(250,204,21,.10));
   border:1px solid rgba(250,204,21,.25);
   box-shadow:0 10px 26px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04)
 }
@@ -89,12 +110,24 @@ h1{font-size:20px}
 }
 @media(max-width:480px){ .logoBadge img{height:46px} }
 
+/* ✅ Fallback si el SVG no carga */
+.logoFallback{
+  display:none;
+  font-weight:1000;
+  letter-spacing:.8px;
+  font-size:22px;
+  color:#fff;
+  text-shadow:0 8px 18px rgba(0,0,0,.7);
+}
+.logoBadge.fallback-on img{display:none}
+.logoBadge.fallback-on .logoFallback{display:block}
+
 /* Estadísticas */
 .stat{display:flex;gap:10px;align-items:center;justify-content:center;margin:6px 0 8px}
 .badge{
   min-width:66px;height:40px;border-radius:10px;
-  background:radial-gradient(100% 100% at 50% 0%, rgba(250,204,21,.28), rgba(220,38,38,.25));
-  display:grid;place-items:center;font-weight:900;font-size:16px;
+  background:radial-gradient(100% 100% at 50% 0%, rgba(250,204,21,.28), rgba(255,31,61,.22));
+  display:grid;place-items:center;font-weight:1000;font-size:16px;
   box-shadow:inset 0 0 10px rgba(250,204,21,.20)
 }
 .smallline{font-size:12px;color:var(--muted)}
@@ -104,7 +137,7 @@ h1{font-size:20px}
 .slotWrap{width:100%;max-width:520px;margin:4px auto 0;position:relative}
 .slot{
   position:relative;border-radius:16px;padding:10px;
-  background:linear-gradient(180deg,rgba(220,38,38,.14),rgba(250,204,21,.08));
+  background:linear-gradient(180deg,rgba(255,31,61,.14),rgba(250,204,21,.08));
   border:1px solid rgba(250,204,21,.22);
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.03), 0 10px 30px rgba(0,0,0,.35)
 }
@@ -135,37 +168,41 @@ canvas.reelCanvas{
 .bulbs i{position:absolute;width:8px;height:8px;border-radius:50%;box-shadow:0 0 10px rgba(255,255,255,.6)}
 @keyframes bulbOn{0%{opacity:.4;transform:scale(.9)}50%{opacity:1;transform:scale(1)}100%{opacity:.4;transform:scale(.9)}}
 
-/* FX línea ganadora */
+/* FX */
 .fx{position:absolute;inset:8px;pointer-events:none}
 .fx canvas{position:absolute;inset:0;display:block}
 
-/* Dock inferior */
+/* Dock */
 .dock{
   position:fixed;left:0;right:0;bottom:0;z-index:20;
   background:linear-gradient(180deg, rgba(11,15,30,0) 0%, rgba(11,15,30,.85) 22%, rgba(11,15,30,.95) 100%);
   padding:8px 10px 10px;display:flex;gap:8px
 }
+/* ✅ Botón principal -> ROJO BRILLANTE */
 .btn{
-  appearance:none;border:none;cursor:pointer;padding:12px 14px;border-radius:14px;font-weight:900;
-  background:linear-gradient(90deg,var(--red),var(--red-dark));
+  appearance:none;border:none;cursor:pointer;padding:12px 14px;border-radius:14px;font-weight:1000;
+  background:linear-gradient(90deg,var(--red),var(--red2));
   color:#fff;width:100%;
-  box-shadow:0 8px 20px rgba(0,0,0,.35); transition:transform .06s ease, box-shadow .06s ease
+  box-shadow:0 10px 22px rgba(255,31,61,.22);
+  transition:transform .06s ease, box-shadow .06s ease, filter .06s ease
 }
-.btn:hover{transform:translateY(-1px); box-shadow:0 10px 22px rgba(0,0,0,.35)}
+.btn:hover{transform:translateY(-1px); box-shadow:0 14px 28px rgba(255,31,61,.28); filter:brightness(1.03)}
 .btn:active{transform:translateY(0)}
 .btn:disabled{opacity:.6;cursor:not-allowed}
 .btn.ok{
   background:linear-gradient(90deg,var(--green),#16a34a);
-  color:#022c22
+  color:#022c22;
+  box-shadow:0 10px 22px rgba(34,197,94,.18);
 }
-.badgeWin{display:inline-block;padding:4px 8px;border-radius:10px;background:rgba(250,204,21,.14);color:var(--gold);border:1px solid rgba(250,204,21,.35);font-weight:900}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid rgba(250,204,21,.22)}
+.badgeWin{display:inline-block;padding:4px 8px;border-radius:10px;background:rgba(250,204,21,.14);color:var(--gold);border:1px solid rgba(250,204,21,.35);font-weight:1000}
 
 /* Confetti */
 .confetti{position:fixed;inset:0;pointer-events:none;z-index:40}
 .confetti i{position:absolute;top:-20px;width:10px;height:14px;border-radius:2px;opacity:0;animation:confFall 1.6s linear forwards}
 @keyframes confFall{8%{opacity:1}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
 
-/* Modal premio */
+/* Modal */
 .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(4,6,14,.6);backdrop-filter:blur(4px);z-index:60}
 .modal.show{display:flex}
 .modalCard{width:min(520px,92vw);background:rgba(6,10,28,.92);border:1px solid rgba(250,204,21,.25);border-radius:16px;padding:14px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
@@ -174,9 +211,8 @@ canvas.reelCanvas{
 .modalBody{display:grid;gap:8px}
 .row{display:flex;gap:8px;align-items:center;justify-content:space-between;border:1px dashed rgba(250,204,21,.22);border-radius:12px;padding:10px}
 .k{color:var(--muted);font-size:13px}
-.v{font-weight:900}
+.v{font-weight:1000}
 .actions{display:flex;gap:8px;margin-top:8px}
-.btn.ghost{background:transparent;color:var(--text);border:1px solid rgba(250,204,21,.22)}
 .closeX{margin-left:auto;cursor:pointer;opacity:.8}
 .closeX:hover{opacity:1}
 
@@ -186,7 +222,6 @@ canvas.reelCanvas{
 .history ul{list-style:none;padding:0;margin:0;display:grid;gap:4px}
 .history li{font-size:12px;color:var(--muted);border:1px dashed rgba(250,204,21,.18);border-radius:10px;padding:6px 8px}
 
-/* Compacto móvil */
 @media(max-width:420px){
   h1{font-size:18px}
   .panel{padding:8px}
@@ -198,6 +233,8 @@ canvas.reelCanvas{
 </head>
 
 <body>
+<!-- ✅ NIEVE -->
+<div class="snow" id="snow" aria-hidden="true"></div>
 <div id="confetti" class="confetti" aria-hidden="true"></div>
 
 <!-- MODAL PREMIO -->
@@ -233,11 +270,10 @@ canvas.reelCanvas{
 
     <div class="grid">
       <div class="panel">
-        <!-- Logo centrado arriba del slot -->
         <div class="logoWrap">
-          <div class="logoBadge" aria-label="Bet300 Navidad">
-            <!-- ✅ Poné tu SVG navideño en el mismo folder con este nombre -->
-            <img src="logo-bet300-navidad.svg" alt="BET300 Navidad">
+          <div class="logoBadge" id="logoBadge" aria-label="Bet300 Navidad">
+            <img id="logoImg" src="logo-bet300-navidad.svg" alt="BET300 Navidad">
+            <span class="logoFallback">BET300 🎅</span>
           </div>
         </div>
 
@@ -247,7 +283,6 @@ canvas.reelCanvas{
             <div class="bulbs" id="bulbs"></div>
             <div class="shadowTop"></div>
             <div class="reelFrame" id="reelFrame">
-              <!-- FX highlight -->
               <div class="fx"><canvas id="fx"></canvas></div>
               <div class="reels">
                 <div class="reel"><canvas id="r1" class="reelCanvas" width="240" height="540"></canvas></div>
@@ -289,13 +324,15 @@ canvas.reelCanvas{
   </div>
 </div>
 
-<!-- Dock -->
 <div class="dock">
   <button id="spinBtn" class="btn">🎯 Girar</button>
   <button id="claimBtn" class="btn ok" disabled>📲 Reclamar</button>
 </div>
 
 <script>
+/* ===== CONFIG (si tu logo tiene otro nombre, cambialo acá) ===== */
+const LOGO_SRC = "logo-bet300-navidad.svg";
+
 /* ===== Plataforma + WhatsApp (5 PCs: ?pc=1|2|3|4|5) ===== */
 const PLATFORM_LINKS = {
   pc1: "https://300vip-c01.vercel.app/",
@@ -329,6 +366,33 @@ const pcKey   = "pc"+pcMatch;
 document.getElementById('playNow').href = PLATFORM_LINKS[pcKey];
 const WP = normalizeWP(WP_NUMBERS[pcKey]);
 const pc = pcMatch;
+
+/* ===== Logo fallback (si no carga SVG) ===== */
+(function setupLogo(){
+  const img = document.getElementById("logoImg");
+  const badge = document.getElementById("logoBadge");
+  img.src = LOGO_SRC;
+  img.addEventListener("error", ()=> badge.classList.add("fallback-on"));
+})();
+
+/* ===== NIEVE ===== */
+function setupSnow(){
+  const snow = document.getElementById("snow");
+  snow.innerHTML = "";
+  const flakes = 44;
+  for(let i=0;i<flakes;i++){
+    const f = document.createElement("i");
+    const size = 3 + Math.random()*4;
+    f.style.width = f.style.height = size + "px";
+    f.style.left = Math.random()*100 + "vw";
+    f.style.opacity = 0.45 + Math.random()*0.55;
+    f.style.animationDuration = (7 + Math.random()*7) + "s";
+    f.style.animationDelay = (Math.random()*-10) + "s";
+    f.style.setProperty("--drift", (Math.random()*46-23) + "px");
+    snow.appendChild(f);
+  }
+}
+setupSnow();
 
 /* ===== Antifraude ===== */
 const SALT = "bet300-slot-navidad-v1";
@@ -387,20 +451,17 @@ const AudioKit = (()=> {
 soundToggle.addEventListener('click',()=>{ soundOn=!soundOn; soundState.textContent=soundOn?'ON':'OFF';});
 
 /* ===== Reels (canvas) ===== */
-const SYMBOLS = ["🎄","🎁","⭐","🔔","7","BET300"]; // Navidad + sello BET300
+const SYMBOLS = ["🎄","🎁","⭐","🔔","7","BET300"];
 const COLS = [document.getElementById('r1'),document.getElementById('r2'),document.getElementById('r3')];
 const CTX = COLS.map(c=>c.getContext('2d'));
 let reelY = [0,0,0], spinning=false;
 
-/* Halo para triple BET300 */
 let haloActive=false, haloUntil=0;
 
-/* FX línea ganadora */
 const fxCanvas = document.getElementById('fx');
 const reelFrameEl = document.getElementById('reelFrame');
 let fxCtx, fxW=0, fxH=0, winFX=null;
 
-/* Animación de símbolos ganadores */
 let winAnim = { cells:{0:new Set(),1:new Set(),2:new Set()}, until:0 };
 
 function sizeFx(){
@@ -437,7 +498,7 @@ function renderWinFX(){
   fxCtx.save();
   fxCtx.lineWidth=6*dpr;
   fxCtx.strokeStyle="rgba(250,204,21,.55)";
-  fxCtx.fillStyle="rgba(220,38,38,.18)";
+  fxCtx.fillStyle="rgba(255,31,61,.16)";
 
   function band(y){
     const pad=6*dpr, h=cell*0.84*dpr, y0=Y(y-(h/dpr)/2), x0=X(leftX)+pad, x1=X(rightX)-pad, r=12*dpr;
@@ -468,10 +529,8 @@ function renderWinFX(){
   fxCtx.restore();
 }
 
-/* Helpers */
 function clampMod(n,m){ return ((n % m) + m) % m; }
 
-/* Sello BET300 dibujado */
 function drawSealBET300(ctx, x, y, cell){
   const r = cell*0.38;
   const ringGrad = ctx.createRadialGradient(x,y,r*0.4, x,y,r);
@@ -482,7 +541,7 @@ function drawSealBET300(ctx, x, y, cell){
   ctx.lineWidth = Math.max(2,r*0.12); ctx.strokeStyle = ringGrad; ctx.stroke();
 
   const g = ctx.createLinearGradient(x,y-r,x,y+r);
-  g.addColorStop(0,"#facc15"); g.addColorStop(1,"#dc2626");
+  g.addColorStop(0,"#facc15"); g.addColorStop(1,"#ff1f3d");
   ctx.beginPath(); ctx.arc(x,y,r*0.82,0,Math.PI*2); ctx.fillStyle = g; ctx.fill();
 
   ctx.save();
@@ -512,12 +571,11 @@ function drawReel(ctx, y, reelIndex){
   const cell = h/3;
   const yoff = (y%1)*cell;
 
-  // Casillas
   for(let i=0;i<3;i++){
     const top = i*cell - yoff + cell;
     const grad=ctx.createLinearGradient(0,top,0,top+cell);
     grad.addColorStop(0,"rgba(250,204,21,.12)");
-    grad.addColorStop(1,"rgba(220,38,38,.10)");
+    grad.addColorStop(1,"rgba(255,31,61,.10)");
     ctx.fillStyle=grad;
     const pad=10;
     ctx.fillRect(pad, top+10, w-pad*2, cell-20);
@@ -527,6 +585,7 @@ function drawReel(ctx, y, reelIndex){
 
   const now = Date.now();
   const pulse = (winAnim && now<winAnim.until) ? (0.5+0.5*Math.sin((now/80))) : 0;
+
   for(let i=-1;i<=3;i++){
     const idx = clampMod(Math.floor(y)+i, SYMBOLS.length);
     const sym = SYMBOLS[idx];
@@ -544,13 +603,13 @@ function drawReel(ctx, y, reelIndex){
     const t = Date.now()/10;
     const cx=w/2, cy=h/2, r1=(h/3)*0.62 + (Math.sin(t/180)+1)/2*10, r2=r1+16;
     const grad = ctx.createRadialGradient(cx,cy,r1*0.2, cx,cy,r2);
-    grad.addColorStop(0,"rgba(250,204,21,.24)");
-    grad.addColorStop(1,"rgba(220,38,38,.06)");
+    grad.addColorStop(0,"rgba(250,204,21,.22)");
+    grad.addColorStop(1,"rgba(255,31,61,.06)");
     ctx.beginPath(); ctx.arc(cx,cy,r2,0,Math.PI*2); ctx.fillStyle=grad; ctx.fill();
   }
 }
 
-/* ===== Luces ===== */
+/* Luces */
 function placeBulbs(){
   const wrap = document.getElementById('slotBox');
   const frame = document.getElementById('reelFrame');
@@ -560,7 +619,7 @@ function placeBulbs(){
   function addBulb(x,y,i){
     const b=document.createElement('i');
     b.style.left=x+'px'; b.style.top=y+'px';
-    b.style.background = (i%3===0)?'#facc15': (i%3===1)?'#dc2626':'#22c55e';
+    b.style.background = (i%3===0)?'#facc15': (i%3===1)?'#ff1f3d':'#22c55e';
     b.style.animation = `bulbOn ${900+((i%5)*120)}ms infinite`;
     bulbs.appendChild(b);
   }
@@ -571,7 +630,7 @@ function placeBulbs(){
   for(let i=0;i<=perSide;i++){ addBulb(w+4, i*(h/perSide), i+300); }
 }
 
-/* ===== UI ===== */
+/* UI refs */
 const spinBtn = document.getElementById('spinBtn');
 const claimBtn= document.getElementById('claimBtn');
 const badge   = document.getElementById('badge');
@@ -617,7 +676,7 @@ function confettiBurst(){
     const p=document.createElement('i');
     p.style.left=(Math.random()*100)+'vw';
     p.style.animationDelay=(Math.random()*0.5)+'s';
-    p.style.background = Math.random()<.5?'linear-gradient(#facc15,#dc2626)':'linear-gradient(#22c55e,#fde68a)';
+    p.style.background = Math.random()<.5?'linear-gradient(#facc15,#ff1f3d)':'linear-gradient(#22c55e,#fde68a)';
     el.appendChild(p);
   }
   setTimeout(()=>{el.innerHTML='';},1800);
@@ -681,7 +740,7 @@ function tickCountdown(){
   document.getElementById('countdown').textContent=h>0?`${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`:`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
 }
 
-/* Probabilidades de centros */
+/* Probabilidades */
 function pickCenters(){
   const s = ()=> SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)];
   const r = Math.random();
@@ -772,10 +831,15 @@ function startRenderLoop(){
   requestAnimationFrame(renderAll);
 }
 
-/* Confetti + FX */
 function flashWinLines(details){
   const lines = (details||[]).map(d=>d.line);
   if(lines.length>0) flashWin(lines);
+}
+
+/* Confetti */
+function openModalAfter(prizeLabel, code, ts){
+  const delay = haloActive ? Math.max(0, haloUntil - Date.now()) : 0;
+  setTimeout(()=> openModal(prizeLabel, code, ts), delay);
 }
 
 /* Botón girar */
@@ -792,8 +856,7 @@ spinBtn.addEventListener('click', ()=>{
   if(soundOn) stopLoop = AudioKit.spinLoop();
 
   const centers = pickCenters();
-  const idx = s => SYMBOLS.indexOf(s);
-  const indexes = centers.map(idx);
+  const indexes = centers.map(s=>SYMBOLS.indexOf(s));
 
   const baseTurns = [11,13,15];
   const targetY = indexes.map((ix,i)=> baseTurns[i] + ix + Math.random()*0.12);
@@ -815,12 +878,9 @@ spinBtn.addEventListener('click', ()=>{
 });
 
 async function onStop(){
-  const vis1 = visibleFor(0);
-  const vis2 = visibleFor(1);
-  const vis3 = visibleFor(2);
-  const grid = { r1: vis1, r2: vis2, r3: vis3 };
-
+  const grid = { r1: visibleFor(0), r2: visibleFor(1), r3: visibleFor(2) };
   const verdict = evaluateAllWins(grid);
+
   if(verdict.details.some(d=>d.kind==="jackpot")){ haloActive = true; haloUntil = Date.now()+1200; }
 
   const prizeValue = verdict.total;
@@ -857,8 +917,7 @@ async function onStop(){
   const linesTxt = (verdict.details.length>0)
     ? verdict.details.map(d=>`${d.kind==="jackpot"?"JACKPOT":d.kind==="triple"?"3 iguales":"2 iguales"} · Línea: ${d.line}`).join(" • ")
     : "Sin acierto";
-  const symTxt = `Símbolos: ${centersNow.join(" | ")}`;
-  resultLine.textContent = `${linesTxt} • ${symTxt}`;
+  resultLine.textContent = `${linesTxt} • Símbolos: ${centersNow.join(" | ")}`;
 
   flashWinLines(verdict.details);
 
@@ -881,9 +940,7 @@ async function onStop(){
   pushHistory({ts, prize:prizeValue, text: (verdict.details.length? verdict.details.map(d=>`${d.line} (${d.kind})`).join(", ") : "Sin acierto")});
   renderHistory();
 
-  const delay = haloActive ? Math.max(0, haloUntil - Date.now()) : 0;
-  setTimeout(()=> openModal(prizeLabel, code, ts), delay);
-
+  openModalAfter(prizeLabel, code, ts);
   spinning=false;
 }
 
