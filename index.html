@@ -4,145 +4,98 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <title>BET300 · Slot Express Navidad</title>
-<meta name="theme-color" content="#070a16"/>
+<meta name="theme-color" content="#050818"/>
+
 <style>
 :root{
-  --bg:#070a16;
-  --panel:#0f132b;
-  --panel2:#0b1026;
-  --border:#1a2250;
+  --bg:#050818;
+  --panel:#0b1024;
+  --panel2:#0f1736;
+  --border:#2b2f55;
 
-  --text:#f2f5ff;
-  --muted:#b5bddf;
+  --text:#f9fbff;
+  --muted:#c7cbee;
+
+  --red:#dc2626;
+  --red-dark:#991b1b;
 
   --gold:#facc15;
-  --gold2:#f59e0b;
+  --gold-soft:#fde68a;
 
-  --red:#ef4444;
   --green:#22c55e;
-  --ice:#22d3ee;
-
-  --neon:#37f3ff;
+  --cyan:#22d3ee;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font:16px/1.35 system-ui,-apple-system,Segoe UI,Roboto;
-  overflow-x:hidden;
-}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.35 system-ui,-apple-system,Segoe UI,Roboto}
 body::before{
-  content:"";
-  position:fixed; inset:0; z-index:-2;
-  background:
+  content:"";position:fixed;inset:0;z-index:-2;background:
     radial-gradient(900px 500px at 70% -10%, rgba(250,204,21,.18), transparent),
-    radial-gradient(700px 350px at 0% 0%, rgba(34,211,238,.16), transparent),
-    radial-gradient(700px 420px at 100% 100%, rgba(239,68,68,.10), transparent),
-    linear-gradient(180deg,#070a16 0%,#070a16 60%,#050812 100%);
+    radial-gradient(700px 350px at 0% 0%, rgba(220,38,38,.16), transparent),
+    radial-gradient(800px 500px at 100% 100%, rgba(34,197,94,.10), transparent),
+    linear-gradient(180deg,#050818 0%,#050818 60%,#030512 100%);
 }
-
-/* Nieve */
-.snow{position:fixed;inset:0;pointer-events:none;z-index:-1}
-.snow i{
-  position:absolute;top:-10px;
-  width:6px;height:6px;border-radius:50%;
-  background:rgba(255,255,255,.9);
-  opacity:.8;
-  filter:blur(.4px);
-  animation:fall linear infinite;
-}
-@keyframes fall{
-  0%{transform:translate3d(0,-10px,0)}
-  100%{transform:translate3d(var(--drift,20px),110vh,0);opacity:0}
-}
-
 .container{max-width:980px;margin:6px auto 86px;padding:0 10px}
 .card{
-  background:
-    radial-gradient(120% 100% at 50% 0%, rgba(250,204,21,.08), transparent),
-    radial-gradient(120% 100% at 0% 0%, rgba(34,211,238,.08), transparent),
-    var(--panel2);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:10px;
-  box-shadow:0 15px 40px rgba(0,0,0,.35)
+  background: radial-gradient(120% 100% at 50% 0%, rgba(250,204,21,.08), transparent), rgba(10,15,35,.55);
+  border:1px solid var(--border);border-radius:18px;padding:10px;box-shadow:0 15px 40px rgba(0,0,0,.35)
 }
 @media(min-width:900px){.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:10px}}
 @media(max-width:520px){.card{border-radius:0;border-left:0;border-right:0}}
 
 /* Header */
 .head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.brand{font-weight:900;letter-spacing:.5px;font-size:22px}
 .pill{
-  background:linear-gradient(90deg,rgba(239,68,68,.12),rgba(250,204,21,.12),rgba(34,211,238,.10));
-  border:1px solid var(--border); border-radius:999px;
-  padding:6px 8px; font-size:12px; color:var(--muted)
+  background:linear-gradient(90deg,rgba(220,38,38,.14),rgba(250,204,21,.12));
+  border:1px solid var(--border); border-radius:999px; padding:6px 8px; font-size:12px; color:var(--muted)
 }
 .pill.time{display:flex;gap:6px;align-items:center}
 .pill.sound{cursor:pointer;user-select:none}
 .pill:hover{filter:brightness(1.08)}
 .count{
   display:inline-flex;gap:6px;align-items:center;padding:3px 8px;border-radius:999px;
-  background:rgba(250,204,21,.14);
-  border:1px solid rgba(250,204,21,.32);
-  color:#ffe8a0;
-  font-weight:800;
-  font-variant-numeric:tabular-nums
+  background:rgba(250,204,21,.15);
+  border:1px solid rgba(250,204,21,.35);
+  color:#ffe27a;font-weight:700;font-variant-numeric:tabular-nums
 }
 .rightTop{margin-left:auto;display:flex;gap:8px;align-items:center}
 .btnLink{
-  display:inline-flex;gap:8px;align-items:center;
-  padding:8px 10px;border-radius:12px;font-weight:900;
-  background:linear-gradient(90deg,#ef4444,#facc15);
-  color:#1a1202;text-decoration:none;
-  border:1px solid rgba(255,255,255,.06);
-  transition:transform .08s ease, box-shadow .08s ease;
+  display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border-radius:12px;font-weight:900;
+  background:linear-gradient(90deg,var(--red),var(--gold));
+  color:#2a0a0a;text-decoration:none;border:1px solid rgba(255,255,255,.06);
+  transition:transform .08s ease, box-shadow .08s ease
 }
+.btnLink:focus-visible{outline:2px solid var(--gold); outline-offset:2px; border-radius:14px}
 .btnLink:hover{transform:translateY(-1px); box-shadow:0 8px 18px rgba(0,0,0,.35)}
-.btnLink:focus-visible{outline:2px solid #facc15; outline-offset:2px; border-radius:14px}
 
-.panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:10px}
+.panel{background:rgba(6,10,28,.55);border:1px solid var(--border);border-radius:14px;padding:10px}
 .center{text-align:center}
 h1,h2,h3,p{margin:0 0 6px}
 h1{font-size:20px}
 .muted{color:var(--muted)}
 
-/* Logo */
-.logoWrap{display:grid;place-items:center;margin:6px 0 8px}
+/* Logo sobre el slot */
+.logoWrap{display:grid;place-items:center;margin:8px 0 10px}
 .logoBadge{
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-  padding:10px 12px;border-radius:16px;
-  background:linear-gradient(180deg,rgba(239,68,68,.14),rgba(250,204,21,.10),rgba(34,211,238,.08));
-  border:1px solid var(--border);
-  box-shadow:0 8px 22px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);
-  width:min(520px,100%);
+  display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:16px;
+  background:linear-gradient(180deg,rgba(220,38,38,.18),rgba(250,204,21,.10));
+  border:1px solid rgba(250,204,21,.25);
+  box-shadow:0 10px 26px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04)
 }
 .logoBadge img{
   height:56px;width:auto;display:block;
-  filter:drop-shadow(0 3px 10px rgba(0,0,0,.55));
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.7));
 }
-.logoBadge .sub{
-  font-weight:900;
-  letter-spacing:.18em;
-  color:#ffe9a8;
-  font-size:12px;
-  text-transform:uppercase;
-  opacity:.95;
-}
-@media(max-width:480px){
-  .logoBadge img{height:48px}
-  .logoBadge .sub{font-size:11px}
-}
+@media(max-width:480px){ .logoBadge img{height:46px} }
 
-/* Stats */
+/* Estadísticas */
 .stat{display:flex;gap:10px;align-items:center;justify-content:center;margin:6px 0 8px}
 .badge{
   min-width:66px;height:40px;border-radius:10px;
-  background:radial-gradient(100% 100% at 50% 0%, rgba(34,211,238,.35), rgba(250,204,21,.22));
-  display:grid;place-items:center;
-  font-weight:900;font-size:16px;
-  box-shadow:inset 0 0 10px rgba(34,211,238,.18)
+  background:radial-gradient(100% 100% at 50% 0%, rgba(250,204,21,.28), rgba(220,38,38,.25));
+  display:grid;place-items:center;font-weight:900;font-size:16px;
+  box-shadow:inset 0 0 10px rgba(250,204,21,.20)
 }
 .smallline{font-size:12px;color:var(--muted)}
 
@@ -151,20 +104,24 @@ h1{font-size:20px}
 .slotWrap{width:100%;max-width:520px;margin:4px auto 0;position:relative}
 .slot{
   position:relative;border-radius:16px;padding:10px;
-  background:linear-gradient(180deg,rgba(239,68,68,.14),rgba(250,204,21,.12),rgba(34,211,238,.10));
-  border:1px solid var(--border);
+  background:linear-gradient(180deg,rgba(220,38,38,.14),rgba(250,204,21,.08));
+  border:1px solid rgba(250,204,21,.22);
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.03), 0 10px 30px rgba(0,0,0,.35)
 }
 .reelFrame{
   position:relative;border-radius:14px;padding:8px;
   background:rgba(10,15,35,.65);
-  border:1px solid #2a2f58
+  border:1px solid rgba(250,204,21,.18)
 }
 .reels{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
-.reel{background:#0c1230;border-radius:10px;padding:6px;border:1px solid #30376a}
+.reel{
+  background:linear-gradient(180deg,#0f1736,#050818);
+  border-radius:12px;padding:6px;
+  border:1px solid rgba(250,204,21,.35);
+}
 canvas.reelCanvas{
   width:100%;height:150px;display:block;border-radius:10px;
-  background:linear-gradient(180deg,#0d1438,#0a102c)
+  background:linear-gradient(180deg,#111a3c,#060b1f);
 }
 @media(min-width:420px){canvas.reelCanvas{height:160px}}
 @media(min-width:540px){canvas.reelCanvas{height:180px}}
@@ -176,13 +133,13 @@ canvas.reelCanvas{
 /* Luces */
 .bulbs{position:absolute;inset:-6px;pointer-events:none}
 .bulbs i{position:absolute;width:8px;height:8px;border-radius:50%;box-shadow:0 0 10px rgba(255,255,255,.6)}
-@keyframes bulbOn{0%{opacity:.35;transform:scale(.9)}50%{opacity:1;transform:scale(1)}100%{opacity:.35;transform:scale(.9)}}
+@keyframes bulbOn{0%{opacity:.4;transform:scale(.9)}50%{opacity:1;transform:scale(1)}100%{opacity:.4;transform:scale(.9)}}
 
-/* FX */
+/* FX línea ganadora */
 .fx{position:absolute;inset:8px;pointer-events:none}
 .fx canvas{position:absolute;inset:0;display:block}
 
-/* Dock */
+/* Dock inferior */
 .dock{
   position:fixed;left:0;right:0;bottom:0;z-index:20;
   background:linear-gradient(180deg, rgba(11,15,30,0) 0%, rgba(11,15,30,.85) 22%, rgba(11,15,30,.95) 100%);
@@ -190,33 +147,36 @@ canvas.reelCanvas{
 }
 .btn{
   appearance:none;border:none;cursor:pointer;padding:12px 14px;border-radius:14px;font-weight:900;
-  width:100%;
-  box-shadow:0 8px 20px rgba(0,0,0,.35);
-  transition:transform .06s ease, box-shadow .06s ease;
+  background:linear-gradient(90deg,var(--red),var(--red-dark));
+  color:#fff;width:100%;
+  box-shadow:0 8px 20px rgba(0,0,0,.35); transition:transform .06s ease, box-shadow .06s ease
 }
 .btn:hover{transform:translateY(-1px); box-shadow:0 10px 22px rgba(0,0,0,.35)}
 .btn:active{transform:translateY(0)}
 .btn:disabled{opacity:.6;cursor:not-allowed}
-#spinBtn{background:linear-gradient(90deg,var(--gold),var(--gold2));color:#1b1202}
-.btn.ok{background:linear-gradient(90deg,var(--neon),#7cfaff);color:#03111a}
+.btn.ok{
+  background:linear-gradient(90deg,var(--green),#16a34a);
+  color:#022c22
+}
+.badgeWin{display:inline-block;padding:4px 8px;border-radius:10px;background:rgba(250,204,21,.14);color:var(--gold);border:1px solid rgba(250,204,21,.35);font-weight:900}
 
 /* Confetti */
 .confetti{position:fixed;inset:0;pointer-events:none;z-index:40}
 .confetti i{position:absolute;top:-20px;width:10px;height:14px;border-radius:2px;opacity:0;animation:confFall 1.6s linear forwards}
 @keyframes confFall{8%{opacity:1}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
 
-/* Modal */
+/* Modal premio */
 .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(4,6,14,.6);backdrop-filter:blur(4px);z-index:60}
 .modal.show{display:flex}
-.modalCard{width:min(520px,92vw);background:var(--panel2);border:1px solid var(--border);border-radius:16px;padding:14px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.modalCard{width:min(520px,92vw);background:rgba(6,10,28,.92);border:1px solid rgba(250,204,21,.25);border-radius:16px;padding:14px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
 .modalHead{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .modalHead h3{margin:0;font-size:18px}
 .modalBody{display:grid;gap:8px}
-.row{display:flex;gap:8px;align-items:center;justify-content:space-between;border:1px dashed var(--border);border-radius:12px;padding:10px}
+.row{display:flex;gap:8px;align-items:center;justify-content:space-between;border:1px dashed rgba(250,204,21,.22);border-radius:12px;padding:10px}
 .k{color:var(--muted);font-size:13px}
 .v{font-weight:900}
 .actions{display:flex;gap:8px;margin-top:8px}
-.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid rgba(250,204,21,.22)}
 .closeX{margin-left:auto;cursor:pointer;opacity:.8}
 .closeX:hover{opacity:1}
 
@@ -224,8 +184,9 @@ canvas.reelCanvas{
 .history{margin-top:8px}
 .history h3{font-size:14px;color:var(--muted);margin-bottom:4px}
 .history ul{list-style:none;padding:0;margin:0;display:grid;gap:4px}
-.history li{font-size:12px;color:var(--muted);border:1px dashed var(--border);border-radius:10px;padding:6px 8px}
+.history li{font-size:12px;color:var(--muted);border:1px dashed rgba(250,204,21,.18);border-radius:10px;padding:6px 8px}
 
+/* Compacto móvil */
 @media(max-width:420px){
   h1{font-size:18px}
   .panel{padding:8px}
@@ -235,16 +196,15 @@ canvas.reelCanvas{
 }
 </style>
 </head>
-<body>
 
-<div class="snow" id="snow"></div>
+<body>
 <div id="confetti" class="confetti" aria-hidden="true"></div>
 
-<!-- MODAL -->
+<!-- MODAL PREMIO -->
 <div id="prizeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modalCard">
     <div class="modalHead">
-      <h3 id="modalTitle">🎄 Premio obtenido</h3>
+      <h3 id="modalTitle">🎁 Premio obtenido</h3>
       <span id="closeModal" class="closeX" aria-label="Cerrar">✖</span>
     </div>
     <div class="modalBody">
@@ -262,30 +222,32 @@ canvas.reelCanvas{
 <div class="container">
   <div class="card">
     <div class="head">
-      <span class="pill">🎄 Slot Express Navidad</span>
+      <div class="brand">BET300</div>
+      <span class="pill">🎄 Especial Navidad</span>
       <span class="pill time">⏳ Tiempo limitado <span class="count" id="countdown">--:--</span></span>
       <span class="pill sound" id="soundToggle">🔊 Sonido: <b id="soundState">ON</b></span>
       <div class="rightTop">
-        <a id="playNow" class="btnLink" target="_blank" rel="noopener">🎮 Entrar a la plataforma</a>
+        <a id="playNow" class="btnLink" target="_blank" rel="noopener"><span>🎮 Entrar a la plataforma</span></a>
       </div>
     </div>
 
     <div class="grid">
       <div class="panel">
+        <!-- Logo centrado arriba del slot -->
         <div class="logoWrap">
           <div class="logoBadge" aria-label="Bet300 Navidad">
-            <img src="logo-navidad.svg" alt="BET300 Navidad" onerror="this.style.display='none'">
-            <div class="sub">ESPECIAL NAVIDAD</div>
+            <!-- ✅ Poné tu SVG navideño en el mismo folder con este nombre -->
+            <img src="logo-bet300-navidad.svg" alt="BET300 Navidad">
           </div>
         </div>
 
-        <h1 class="center">🎰 Slot Express</h1>
-
+        <h1 class="center">🎰 Slot Express Navidad</h1>
         <div class="stage">
           <div class="slotWrap slot" id="slotBox">
             <div class="bulbs" id="bulbs"></div>
             <div class="shadowTop"></div>
             <div class="reelFrame" id="reelFrame">
+              <!-- FX highlight -->
               <div class="fx"><canvas id="fx"></canvas></div>
               <div class="reels">
                 <div class="reel"><canvas id="r1" class="reelCanvas" width="240" height="540"></canvas></div>
@@ -327,51 +289,36 @@ canvas.reelCanvas{
   </div>
 </div>
 
+<!-- Dock -->
 <div class="dock">
   <button id="spinBtn" class="btn">🎯 Girar</button>
   <button id="claimBtn" class="btn ok" disabled>📲 Reclamar</button>
 </div>
 
 <script>
-/* ========= NIEVE ========= */
-function setupSnow(){
-  const snow = document.getElementById("snow");
-  snow.innerHTML = "";
-  const flakes = 42;
-  for(let i=0;i<flakes;i++){
-    const f = document.createElement("i");
-    const size = 3 + Math.random()*4;
-    f.style.width = f.style.height = size + "px";
-    f.style.left = Math.random()*100 + "vw";
-    f.style.opacity = (0.45 + Math.random()*0.55).toFixed(2);
-    f.style.animationDuration = (7 + Math.random()*6) + "s";
-    f.style.animationDelay = (Math.random()*-10) + "s";
-    f.style.setProperty("--drift", (Math.random()*50-25) + "px");
-    snow.appendChild(f);
-  }
-}
-setupSnow();
-
-/* ===== 5 PCs: ?pc=1|2|3|4|5 ===== */
+/* ===== Plataforma + WhatsApp (5 PCs: ?pc=1|2|3|4|5) ===== */
 const PLATFORM_LINKS = {
   pc1: "https://300vip-c01.vercel.app/",
   pc2: "https://300vip-c02.vercel.app/",
   pc3: "https://300vip-c03.vercel.app/",
   pc4: "https://alvge.bet300vip.com/",
-  pc5: "https://www.bet300.biz/"
+  pc5: "https://bet300.site/"
 };
 
 const WP_NUMBERS = {
-  pc1: "54911171559478",
-  pc2: "54911151622581",
-  pc3: "54911154040255",
+  pc1: "5491171559478",
+  pc2: "5491151622581",
+  pc3: "5491154040255",
   pc4: "5491150030414",
   pc5: "5491150030414"
 };
 
 function normalizeWP(n){
   const s = String(n).replace(/[^\d+]/g, "");
-  return s.startsWith("+") ? s.slice(1) : s;
+  if (s.startsWith("+549") || s.startsWith("549")) return s.replace(/^\+/, "");
+  if (s.startsWith("+54"))  return "549" + s.slice(3);
+  if (s.startsWith("54"))   return "549" + s.slice(2);
+  return "549" + s;
 }
 
 const params = new URLSearchParams(location.search);
@@ -394,10 +341,7 @@ function ensureDeviceId(){
   return id;
 }
 const DEVICE_ID = ensureDeviceId();
-function todayKey(){
-  const n=new Date();
-  return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`;
-}
+function todayKey(){const n=new Date();return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`}
 function tsString(d=new Date()){
   const dd=String(d.getDate()).padStart(2,'0'),mm=String(d.getMonth()+1).padStart(2,'0'),yyyy=d.getFullYear();
   const hh=String(d.getHours()).padStart(2,'0'),mi=String(d.getMinutes()).padStart(2,'0');
@@ -438,20 +382,25 @@ const AudioKit = (()=> {
     if(kind==='pair'){ [660,880].forEach((f,i)=>setTimeout(()=>blip(f,0.10,0.08,'square'), i*120)); return; }
     blip(420,0.07,0.05,'sine');
   }
-  return {unlock,spinLoop,win};
+  return {ctx,unlock,spinLoop,win};
 })();
 soundToggle.addEventListener('click',()=>{ soundOn=!soundOn; soundState.textContent=soundOn?'ON':'OFF';});
 
-/* ===== Slot navideño ===== */
-const SYMBOLS = ["🎁","🎄","⭐","🔔","🍬","🧦","❄️","🦌","BET300"];
+/* ===== Reels (canvas) ===== */
+const SYMBOLS = ["🎄","🎁","⭐","🔔","7","BET300"]; // Navidad + sello BET300
 const COLS = [document.getElementById('r1'),document.getElementById('r2'),document.getElementById('r3')];
 const CTX = COLS.map(c=>c.getContext('2d'));
 let reelY = [0,0,0], spinning=false;
 
+/* Halo para triple BET300 */
 let haloActive=false, haloUntil=0;
+
+/* FX línea ganadora */
 const fxCanvas = document.getElementById('fx');
 const reelFrameEl = document.getElementById('reelFrame');
 let fxCtx, fxW=0, fxH=0, winFX=null;
+
+/* Animación de símbolos ganadores */
 let winAnim = { cells:{0:new Set(),1:new Set(),2:new Set()}, until:0 };
 
 function sizeFx(){
@@ -464,11 +413,14 @@ function sizeFx(){
   fxCanvas.style.height = rect.height+'px';
   fxCtx = fxCanvas.getContext('2d');
 }
-window.addEventListener('resize', ()=>{ clearTimeout(window.__fxTo); window.__fxTo=setTimeout(()=>{ sizeFx(); placeBulbs(); }, 120); });
+window.addEventListener('resize', ()=>{
+  clearTimeout(window.__fxTo);
+  window.__fxTo=setTimeout(()=>{ sizeFx(); placeBulbs(); }, 120);
+});
 
 function flashWin(lines){ winFX = { lines, until: Date.now()+1100 }; }
 function renderWinFX(){
-  if(!fxCtx) return;
+  if(!fxCtx){ return; }
   fxCtx.clearRect(0,0,fxW,fxH);
   if(!winFX || Date.now()>winFX.until) return;
 
@@ -484,8 +436,8 @@ function renderWinFX(){
 
   fxCtx.save();
   fxCtx.lineWidth=6*dpr;
-  fxCtx.strokeStyle="rgba(34,211,238,.70)";
-  fxCtx.fillStyle="rgba(250,204,21,.16)";
+  fxCtx.strokeStyle="rgba(250,204,21,.55)";
+  fxCtx.fillStyle="rgba(220,38,38,.18)";
 
   function band(y){
     const pad=6*dpr, h=cell*0.84*dpr, y0=Y(y-(h/dpr)/2), x0=X(leftX)+pad, x1=X(rightX)-pad, r=12*dpr;
@@ -497,35 +449,46 @@ function renderWinFX(){
     fxCtx.arcTo(x0,y0,x1,y0,r);
     fxCtx.closePath(); fxCtx.fill(); fxCtx.stroke();
   }
-  function diag(x0,y0,x1,y1){ fxCtx.beginPath(); fxCtx.moveTo(X(x0)+8*dpr,Y(y0)); fxCtx.lineTo(X(x1)-8*dpr,Y(y1)); fxCtx.stroke(); }
+  function diag(x0,y0,x1,y1){
+    fxCtx.beginPath();
+    fxCtx.moveTo(X(x0)+8*dpr,Y(y0));
+    fxCtx.lineTo(X(x1)-8*dpr,Y(y1));
+    fxCtx.stroke();
+  }
 
   (winFX.lines||[]).forEach(line=>{
-    if(line==="Arriba") band(topY);
-    if(line==="Centro") band(centerY);
-    if(line==="Abajo")  band(bottomY);
-    if(line==="Diag ↘") diag(leftX,topY,rightX,bottomY);
-    if(line==="Diag ↗") diag(leftX,bottomY,rightX,topY);
+    switch(line){
+      case "Arriba": band(topY); break;
+      case "Centro": band(centerY); break;
+      case "Abajo":  band(bottomY); break;
+      case "Diag ↘": diag(leftX,topY,rightX,bottomY); break;
+      case "Diag ↗": diag(leftX,bottomY,rightX,topY); break;
+    }
   });
-
   fxCtx.restore();
 }
+
+/* Helpers */
 function clampMod(n,m){ return ((n % m) + m) % m; }
 
+/* Sello BET300 dibujado */
 function drawSealBET300(ctx, x, y, cell){
   const r = cell*0.38;
+  const ringGrad = ctx.createRadialGradient(x,y,r*0.4, x,y,r);
+  ringGrad.addColorStop(0,"rgba(255,255,255,.28)");
+  ringGrad.addColorStop(1,"rgba(255,255,255,.06)");
   ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
-  ctx.fillStyle = "rgba(10,15,35,.92)"; ctx.fill();
+  ctx.fillStyle = "rgba(6,10,28,.92)"; ctx.fill();
+  ctx.lineWidth = Math.max(2,r*0.12); ctx.strokeStyle = ringGrad; ctx.stroke();
 
   const g = ctx.createLinearGradient(x,y-r,x,y+r);
-  g.addColorStop(0,"#ef4444");
-  g.addColorStop(1,"#facc15");
-  ctx.beginPath(); ctx.arc(x,y,r*0.82,0,Math.PI*2);
-  ctx.fillStyle = g; ctx.fill();
+  g.addColorStop(0,"#facc15"); g.addColorStop(1,"#dc2626");
+  ctx.beginPath(); ctx.arc(x,y,r*0.82,0,Math.PI*2); ctx.fillStyle = g; ctx.fill();
 
   ctx.save();
-  ctx.fillStyle = "#071016";
+  ctx.fillStyle = "#050818";
   ctx.textAlign="center"; ctx.textBaseline="middle";
-  ctx.font = `900 ${Math.floor(cell*0.22)}px system-ui,Segoe UI,Roboto`;
+  ctx.font = `800 ${Math.floor(cell*0.22)}px system-ui,Segoe UI,Roboto`;
   ctx.fillText("BET", x, y - r*0.22);
   ctx.font = `900 ${Math.floor(cell*0.30)}px system-ui,Segoe UI,Roboto`;
   ctx.fillText("300", x, y + r*0.18);
@@ -536,40 +499,40 @@ function drawSymbol(ctx, text, x, y, cell, scale=1){
   if(text==="BET300"){ drawSealBET300(ctx, x, y, cell); }
   else{
     ctx.textAlign="center"; ctx.textBaseline="middle";
-    ctx.fillStyle="#f2f5ff";
+    ctx.fillStyle="#f9fbff";
     ctx.font = `${Math.floor(cell*0.52)}px system-ui,Apple Color Emoji,Segoe UI Emoji`;
     ctx.fillText(text, x, y);
   }
   ctx.restore();
 }
+
 function drawReel(ctx, y, reelIndex){
   const w=ctx.canvas.width, h=ctx.canvas.height;
   ctx.clearRect(0,0,w,h);
   const cell = h/3;
   const yoff = (y%1)*cell;
 
+  // Casillas
   for(let i=0;i<3;i++){
     const top = i*cell - yoff + cell;
     const grad=ctx.createLinearGradient(0,top,0,top+cell);
-    grad.addColorStop(0,"rgba(239,68,68,.14)");
-    grad.addColorStop(1,"rgba(34,211,238,.10)");
+    grad.addColorStop(0,"rgba(250,204,21,.12)");
+    grad.addColorStop(1,"rgba(220,38,38,.10)");
     ctx.fillStyle=grad;
-    const pad=8;
-    ctx.fillRect(pad, top+8, w-pad*2, cell-16);
-    ctx.strokeStyle="rgba(255,255,255,.06)";
-    ctx.lineWidth=2;
-    ctx.strokeRect(pad, top+8, w-pad*2, cell-16);
+    const pad=10;
+    ctx.fillRect(pad, top+10, w-pad*2, cell-20);
+    ctx.strokeStyle="rgba(255,255,255,.07)"; ctx.lineWidth=2;
+    ctx.strokeRect(pad, top+10, w-pad*2, cell-20);
   }
 
   const now = Date.now();
   const pulse = (winAnim && now<winAnim.until) ? (0.5+0.5*Math.sin((now/80))) : 0;
-
   for(let i=-1;i<=3;i++){
     const idx = clampMod(Math.floor(y)+i, SYMBOLS.length);
     const sym = SYMBOLS[idx];
     const yy = (i*cell - yoff) + h/2;
 
-    let row = (i===0)?0 : (i===1)?1 : (i===2)?2 : -1;
+    let row = (i===-1)?-1 : (i===0)?0 : (i===1)?1 : (i===2)?2 : -1;
     let scale = 1;
     if(row>=0 && winAnim && winAnim.cells[reelIndex] && winAnim.cells[reelIndex].has(row)){
       scale = 1 + 0.12*pulse;
@@ -581,25 +544,23 @@ function drawReel(ctx, y, reelIndex){
     const t = Date.now()/10;
     const cx=w/2, cy=h/2, r1=(h/3)*0.62 + (Math.sin(t/180)+1)/2*10, r2=r1+16;
     const grad = ctx.createRadialGradient(cx,cy,r1*0.2, cx,cy,r2);
-    grad.addColorStop(0,"rgba(250,204,21,.20)");
-    grad.addColorStop(1,"rgba(34,211,238,.05)");
-    ctx.beginPath(); ctx.arc(cx,cy,r2,0,Math.PI*2);
-    ctx.fillStyle=grad; ctx.fill();
+    grad.addColorStop(0,"rgba(250,204,21,.24)");
+    grad.addColorStop(1,"rgba(220,38,38,.06)");
+    ctx.beginPath(); ctx.arc(cx,cy,r2,0,Math.PI*2); ctx.fillStyle=grad; ctx.fill();
   }
 }
 
-/* Luces */
+/* ===== Luces ===== */
 function placeBulbs(){
   const wrap = document.getElementById('slotBox');
   const frame = document.getElementById('reelFrame');
   const bulbs = document.getElementById('bulbs');
   bulbs.innerHTML='';
   const w = wrap.clientWidth, h = frame.clientHeight + 20;
-
   function addBulb(x,y,i){
     const b=document.createElement('i');
     b.style.left=x+'px'; b.style.top=y+'px';
-    b.style.background = (i%3===0)?'#facc15': (i%3===1)?'#ef4444':'#22d3ee';
+    b.style.background = (i%3===0)?'#facc15': (i%3===1)?'#dc2626':'#22c55e';
     b.style.animation = `bulbOn ${900+((i%5)*120)}ms infinite`;
     bulbs.appendChild(b);
   }
@@ -610,7 +571,7 @@ function placeBulbs(){
   for(let i=0;i<=perSide;i++){ addBulb(w+4, i*(h/perSide), i+300); }
 }
 
-/* UI */
+/* ===== UI ===== */
 const spinBtn = document.getElementById('spinBtn');
 const claimBtn= document.getElementById('claimBtn');
 const badge   = document.getElementById('badge');
@@ -647,7 +608,7 @@ function money(n){ return "$"+n.toLocaleString("es-AR"); }
 function whatsappText(prizeLabel){
   const code = localStorage.getItem('slot_code') || '(SIN-COD)';
   const ts   = localStorage.getItem('slot_ts')   || tsString();
-  return `Hola, gané ${prizeLabel} en el Slot Navidad BET300 y quiero reclamarlo con mi próxima carga. Código: ${code} · ${ts}`;
+  return `Hola, gané ${prizeLabel} en el Slot Express Navidad BET300 🎄 y quiero reclamarlo con mi próxima carga.\nCódigo: ${code}\nFecha/Hora: ${ts}\nPC: ${pc}`;
 }
 function confettiBurst(){
   const el=document.getElementById('confetti'); el.innerHTML='';
@@ -656,9 +617,7 @@ function confettiBurst(){
     const p=document.createElement('i');
     p.style.left=(Math.random()*100)+'vw';
     p.style.animationDelay=(Math.random()*0.5)+'s';
-    p.style.background = Math.random()<.5
-      ? 'linear-gradient(#facc15,#ef4444)'
-      : 'linear-gradient(#37f3ff,#7cfaff)';
+    p.style.background = Math.random()<.5?'linear-gradient(#facc15,#dc2626)':'linear-gradient(#22c55e,#fde68a)';
     el.appendChild(p);
   }
   setTimeout(()=>{el.innerHTML='';},1800);
@@ -686,7 +645,8 @@ function restorePrizeIfAny(){
     title.textContent="🎉 ¡Premio obtenido!";
     subtitle.innerHTML=`Recibís <b>${money(p.value)} extra</b> con tu próxima carga.`;
     stampEl.textContent=`Código: ${code} · ${ts}`;
-    claimBtn.disabled=false; spinBtn.disabled=true;
+    claimBtn.disabled=false;
+    spinBtn.disabled=true;
     const msg=whatsappText(money(p.value));
     claimBtn.onclick=()=>location.href=`https://wa.me/${WP}?text=${encodeURIComponent(msg)}`;
   }
@@ -700,7 +660,6 @@ function scheduleMidnightReset(){
     localStorage.removeItem('slot_code');
     localStorage.removeItem('slot_ts');
     localStorage.setItem('slot_date',todayKey());
-
     spinBtn.disabled=false;
     badge.textContent='-';
     title.textContent='Tenés 1 giro disponible';
@@ -719,12 +678,10 @@ function tickCountdown(){
   const ms=endOfDay()-Date.now();
   const total=Math.max(0,Math.floor(ms/1000));
   const h=Math.floor(total/3600), m=Math.floor((total%3600)/60), s=total%60;
-  document.getElementById('countdown').textContent =
-    h>0?`${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`
-       :`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  document.getElementById('countdown').textContent=h>0?`${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`:`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
 }
 
-/* Probabilidades */
+/* Probabilidades de centros */
 function pickCenters(){
   const s = ()=> SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)];
   const r = Math.random();
@@ -765,14 +722,10 @@ function evaluateAllWins(grid){
     {name:"Diag ↘", r:[grid.r1.top,    grid.r2.center, grid.r3.bottom]},
     {name:"Diag ↗", r:[grid.r1.bottom, grid.r2.center, grid.r3.top]},
   ];
-
-  const details=[];
-  let total=0;
-
+  const details=[]; let total=0;
   for(const L of lines){
     const [a,b,c] = L.r;
     if (a!==b) continue;
-
     if (a===b && b===c){
       const kind = (a==="BET300") ? "jackpot" : "triple";
       const prize = (kind==="jackpot") ? 10000 : 5000;
@@ -780,18 +733,15 @@ function evaluateAllWins(grid){
       details.push({line:L.name, kind, prize, symbols:[a,b,c]});
       continue;
     }
-
     if (a===b && c!==b){
       const prize=2000;
       total += prize;
       details.push({line:L.name, kind:"pair", prize, symbols:[a,b,c]});
     }
   }
-
   if(details.length===0){
     return { total:1000, details:[], kind:"none" };
   }
-
   const hasJackpot = details.some(d=>d.kind==="jackpot");
   const hasTriple  = details.some(d=>d.kind==="triple");
   const mainKind = hasJackpot ? "jackpot" : hasTriple ? "triple" : "pair";
@@ -822,14 +772,16 @@ function startRenderLoop(){
   requestAnimationFrame(renderAll);
 }
 
-/* Botones */
-const spinBtn = document.getElementById('spinBtn');
+/* Confetti + FX */
+function flashWinLines(details){
+  const lines = (details||[]).map(d=>d.line);
+  if(lines.length>0) flashWin(lines);
+}
+
+/* Botón girar */
 spinBtn.addEventListener('click', ()=>{
   if(spinning) return;
-  if(localStorage.getItem('slot_done')==='1'){
-    alert("Ya usaste tu chance de hoy 🎄");
-    return;
-  }
+  if(localStorage.getItem('slot_done')==='1'){ alert("Ya usaste tu giro de hoy"); return; }
 
   spinning=true;
   spinBtn.disabled=true;
@@ -863,13 +815,13 @@ spinBtn.addEventListener('click', ()=>{
 });
 
 async function onStop(){
-  const grid = { r1: visibleFor(0), r2: visibleFor(1), r3: visibleFor(2) };
-  const verdict = evaluateAllWins(grid);
+  const vis1 = visibleFor(0);
+  const vis2 = visibleFor(1);
+  const vis3 = visibleFor(2);
+  const grid = { r1: vis1, r2: vis2, r3: vis3 };
 
-  if(verdict.details.some(d=>d.kind==="jackpot")){
-    haloActive = true;
-    haloUntil = Date.now()+1200;
-  }
+  const verdict = evaluateAllWins(grid);
+  if(verdict.details.some(d=>d.kind==="jackpot")){ haloActive = true; haloUntil = Date.now()+1200; }
 
   const prizeValue = verdict.total;
   const prizeLabel = money(prizeValue);
@@ -880,7 +832,6 @@ async function onStop(){
   localStorage.setItem('slot_ts', ts);
   localStorage.setItem('slot_prize', JSON.stringify({type:'money', value:prizeValue}));
   localStorage.setItem('slot_done','1');
-  localStorage.setItem('slot_date',todayKey());
 
   badge.textContent = prizeLabel;
 
@@ -906,10 +857,10 @@ async function onStop(){
   const linesTxt = (verdict.details.length>0)
     ? verdict.details.map(d=>`${d.kind==="jackpot"?"JACKPOT":d.kind==="triple"?"3 iguales":"2 iguales"} · Línea: ${d.line}`).join(" • ")
     : "Sin acierto";
-  resultLine.textContent = `${linesTxt} • Símbolos: ${centersNow.join(" | ")}`;
+  const symTxt = `Símbolos: ${centersNow.join(" | ")}`;
+  resultLine.textContent = `${linesTxt} • ${symTxt}`;
 
-  const winningLines = verdict.details.map(d=>d.line);
-  if(winningLines.length>0) flashWin(winningLines);
+  flashWinLines(verdict.details);
 
   winAnim = { cells:{0:new Set(),1:new Set(),2:new Set()}, until: Date.now()+1200 };
   verdict.details.forEach(d=>{
@@ -927,8 +878,7 @@ async function onStop(){
   if(soundOn) AudioKit.win(verdict.kind);
   confettiBurst();
 
-  const histText = (verdict.details.length>0) ? verdict.details.map(d=>`${d.line} (${d.kind})`).join(", ") : "Sin acierto";
-  pushHistory({ts, prize:prizeValue, text:histText});
+  pushHistory({ts, prize:prizeValue, text: (verdict.details.length? verdict.details.map(d=>`${d.line} (${d.kind})`).join(", ") : "Sin acierto")});
   renderHistory();
 
   const delay = haloActive ? Math.max(0, haloUntil - Date.now()) : 0;
@@ -938,9 +888,9 @@ async function onStop(){
 }
 
 /* Init */
+function placeAndSize(){ sizeFx(); placeBulbs(); }
 function init(){
-  sizeFx();
-  placeBulbs();
+  placeAndSize();
   restoreDaily();
   restorePrizeIfAny();
   tickCountdown();
